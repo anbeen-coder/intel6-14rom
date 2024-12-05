@@ -1,8 +1,11 @@
 name: Build
 
-on:
+on:  
+  push:
+    branches:
+      - master
   workflow_dispatch: 
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,17 +15,43 @@ jobs:
       - uses: actions/checkout@v3
         with:  
           submodules: 'true'
-          
+
       - name: Install base package
-        run: sudo apt update && apt install build-* bc dosfstools iasl mtools nasm python3 python3-distutils python3-pexpect qemu-utils uuid-dev xorriso -y
-            
+        run: sudo apt update && sudo apt install build-* bc dosfstools iasl mtools nasm python3 python3-distutils python3-pexpect qemu-utils uuid-dev xorriso -y
+
       - name: Build
         run: bash build_efi_rom.sh && find ./ -name "6-14.rom" -exec cp  {} ./ \;
-        
-      - name: Upload to GitHub Releases
-        uses: softprops/action-gh-release@v1
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+      - name: upload
+        uses: actions/upload-artifact@v4
         with:
-          files: 6-14.rom
+          name: intel-igdrom-6-14
+          path: 6-14.rom
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD-HHmmSS
+          utcOffset: "+08:00"
+          
+      - name: Create GitHub Releases
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ format('v{0}',steps.current-time.outputs.formattedTime )}}
+          release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime )}}
+          body: |
+            New  Buid
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            file: 6-14.rom
+            asset_name: ${{ format('intel-igd-6-14-{0}.rom', steps.current-time.outputs.formattedTime )}}
+            tag: ${{ format('v{0}',steps.current-time.outputs.formattedTime )}}
+            overwrite: true
