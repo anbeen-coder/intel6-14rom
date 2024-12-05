@@ -1,378 +1,175 @@
-==============
-EDK II Project
-==============
-
-A modern, feature-rich, cross-platform firmware development
-environment for the UEFI and PI specifications from www.uefi.org.
-
-Core CI Build Status
---------------------
-
-============================= ================= =============== ===================
- Host Type & Toolchain        Build Status      Test Status     Code Coverage
-============================= ================= =============== ===================
-Windows_VS2019_               |WindowsCiBuild|  |WindowsCiTest| |WindowsCiCoverage|
-Ubuntu_GCC5_                  |UbuntuCiBuild|   |UbuntuCiTest|  |UbuntuCiCoverage|
-============================= ================= =============== ===================
-
-`More CI Build information <.pytool/Readme.md>`__
-
-Platform CI Build Status
-------------------------
-
-Microsoft Windows VS2019
-````````````````````````
-
-============================= ================= ============= ============= ==============
- Toolchain                    CONFIG            DEBUG         RELEASE       NOOPT
-============================= ================= ============= ============= ==============
-EmulatorPkg_Win_VS2019_       | IA32            |em32d|       |em32r|       |em32n|
-|                             | X64             |em64d|       |em64r|       |em64n|
-|                             | IA32 FULL       |em32fd|      |em32fr|      |em32fn|
-|                             | X64 FULL        |em64fd|      |em64fr|      |em64fn|
-OvmfPkg_Win_VS2019_           | IA32            |op32d|       |op32r|       |op32n|
-|                             | X64             |op64d|       |op64r|       |op64n|
-|                             | IA32 X64        |op3264d|     |op3264r|     |op3264n|
-|                             | IA32 X64 FULL   |op3264fd|    |op3264fr|    |op3264fn|
-============================= ================= ============= ============= ==============
-
-Ubuntu 18.04 GCC5
-`````````````````
-
-============================= ================= ============= ============= ==============
- Toolchain                    CONFIG            DEBUG         RELEASE       NOOPT
-============================= ================= ============= ============= ==============
-ArmVirtPkg_Ubuntu_GCC5_       | AARCH64         |avAArch64du| |avAArch64ru| |avAArch64nu|
-|                             | ARM             |avArmdu|     |avArmru|     |avArmnu|
-EmulatorPkg_Ubuntu_GCC5_      | IA32            |em32du|      |em32ru|      |em32nu|
-|                             | X64             |em64du|      |em64ru|      |em64nu|
-|                             | IA32 FULL       |em32fdu|     |em32fru|     |em32fnu|
-|                             | X64 FULL        |em64fdu|     |em64fru|     |em64fnu|
-OvmfPkg_Ubuntu_GCC5_          | IA32            |op32du|      |op32ru|      |op32nu|
-|                             | X64             |op64du|      |op64ru|      |op64nu|
-|                             | IA32 X64        |op3264du|    |op3264ru|    |op3264nu|
-|                             | IA32 X64 FULL   |op3264fdu|   |op3264fru|   |op3264fru|
-============================= ================= ============= ============= ==============
-
-|TCBZ_2668|_ - EmulatorPkg Ubuntu GCC5 Segfaults during execution.
-
-|TCBZ_2639|_ - EmulatorPkg Ubuntu GCC5 Segfaults during execution.
-
-`More ArmVirtPkg CI Build Information <ArmVirtPkg/PlatformCI/ReadMe.md>`__
-
-`More EmulatorPkg CI Build Information <EmulatorPkg/PlatformCI/ReadMe.md>`__
-
-`More OvmfPkg CI Build Information <OvmfPkg/PlatformCI/ReadMe.md>`__
-
-
-License Details
----------------
-
-The majority of the content in the EDK II open source project uses a
-`BSD-2-Clause Plus Patent License <License.txt>`__. The EDK II open
-source project contains the following components that are covered by additional
-licenses:
-
--  `BaseTools/Plugin/CodeQL/analyze <https://www.apache.org/licenses/LICENSE-2.0>`__
--  `BaseTools/Source/C/LzmaCompress <BaseTools/Source/C/LzmaCompress/LZMA-SDK-README.txt>`__
--  `BaseTools/Source/C/VfrCompile/Pccts <BaseTools/Source/C/VfrCompile/Pccts/RIGHTS>`__
--  `CryptoPkg\Library\BaseCryptLib\SysCall\inet_pton.c <CryptoPkg\Library\BaseCryptLib\SysCall\inet_pton.c>`__
--  `CryptoPkg\Library\Include\crypto\dso_conf.h <https://github.com/openssl/openssl/blob/e2e09d9fba1187f8d6aafaa34d4172f56f1ffb72/LICENSE>`__
--  `CryptoPkg\Library\Include\openssl\opensslconf.h <https://github.com/openssl/openssl/blob/e2e09d9fba1187f8d6aafaa34d4172f56f1ffb72/LICENSE>`__
--  `EmbeddedPkg/Library/FdtLib <EmbeddedPkg/Library/FdtLib/fdt.c>`__.  (EDK II uses BSD License)
--  `EmbeddedPkg/Include/fdt.h <EmbeddedPkg/Include/fdt.h>`__.  (EDK II uses BSD Licence)
--  `EmbeddedPkg/Include/libfdt.h <EmbeddedPkg/Include/libfdt.h>`__.  (EDK II uses BSD License)
--  `MdeModulePkg/Library/LzmaCustomDecompressLib <MdeModulePkg/Library/LzmaCustomDecompressLib/LZMA-SDK-README.txt>`__
--  `OvmfPkg <OvmfPkg/License.txt>`__
-
-The EDK II open source project uses content from upstream projects as git submodules
-that are covered by additional licenses.
-
--  `BaseTools/Source/C/BrotliCompress/brotli <https://github.com/google/brotli/blob/666c3280cc11dc433c303d79a83d4ffbdd12cc8d/LICENSE>`__
--  `CryptoPkg/Library/OpensslLib/openssl <https://github.com/openssl/openssl/blob/e2e09d9fba1187f8d6aafaa34d4172f56f1ffb72/LICENSE>`__
--  `CryptoPkg/Library/MbedTlsLib/mbedtls <https://github.com/Mbed-TLS/mbedtls/blob/8c89224991adff88d53cd380f42a2baa36f91454/LICENSE>`__
--  `MdeModulePkg/Library/BrotliCustomDecompressLib/brotli <https://github.com/google/brotli/blob/666c3280cc11dc433c303d79a83d4ffbdd12cc8d/LICENSE>`__
--  `MdeModulePkg/Universal/RegularExpressionDxe/oniguruma <https://github.com/kkos/oniguruma/blob/abfc8ff81df4067f309032467785e06975678f0d/COPYING>`__
--  `UnitTestFrameworkPkg/Library/CmockaLib/cmocka <https://github.com/tianocore/edk2-cmocka/blob/f5e2cd77c88d9f792562888d2b70c5a396bfbf7a/COPYING>`__
--  `UnitTestFrameworkPkg/Library/GoogleTestLib/googletest <https://github.com/google/googletest/blob/86add13493e5c881d7e4ba77fb91c1f57752b3a4/LICENSE>`__
--  `UnitTestFrameworkPkg/Library/SubhookLib/subhook <https://github.com/tianocore/edk2-subhook/blob/83d4e1ebef3588fae48b69a7352cc21801cb70bc/LICENSE.txt>`__
--  `RedfishPkg/Library/JsonLib/jansson <https://github.com/akheron/jansson/blob/2882ead5bb90cf12a01b07b2c2361e24960fae02/LICENSE>`__
--  `MdePkg/Library/BaseFdtLib/libfdt <https://github.com/devicetree-org/pylibfdt/blob/f39368a217496d32c4091a2dba4045b60649e3a5/BSD-2-Clause>`__
--  `MdePkg/Library/MipiSysTLib/mipisyst <https://github.com/MIPI-Alliance/public-mipi-sys-t/blob/aae857d0d05ac65152ed24992a4acd834a0a107c/LICENSE>`__
--  `SecurityPkg/DeviceSecurity/SpdmLib/libspdm <https://github.com/DMTF/libspdm/blob/main/LICENSE.md>`__
-
-The EDK II Project is composed of packages. The maintainers for each package
-are listed in `Maintainers.txt <Maintainers.txt>`__.
-
-Resources
----------
+intel 6-14代pve虚拟机核显直通使用rom 使用说明
 
--  `TianoCore <http://www.tianocore.org>`__
--  `EDK
-   II <https://github.com/tianocore/tianocore.github.io/wiki/EDK-II>`__
--  `Getting Started with EDK
-   II <https://github.com/tianocore/tianocore.github.io/wiki/Getting-Started-with-EDK-II>`__
--  `Mailing
-   Lists <https://github.com/tianocore/tianocore.github.io/wiki/Mailing-Lists>`__
--  `TianoCore Bugzilla <https://bugzilla.tianocore.org>`__
--  `How To
-   Contribute <https://github.com/tianocore/tianocore.github.io/wiki/How-To-Contribute>`__
--  `Release
-   Planning <https://github.com/tianocore/tianocore.github.io/wiki/EDK-II-Release-Planning>`__
+本项目fork edk2 2024年12月5日版本
 
-Code Contributions
-------------------
 
-To make a contribution to a TianoCore project, follow these steps.
 
-#. Create a change description in the format specified below to
-    use in the source control commit log.
-#. Your commit message must include your ``Signed-off-by`` signature
-#. Submit your code to the TianoCore project using the process
-    that the project documents on its web page. If the process is
-    not documented, then submit the code on development email list
-    for the project.
-#. It is preferred that contributions are submitted using the same
-    copyright license as the base project. When that is not possible,
-    then contributions using the following licenses can be accepted:
-
--  Apache License, Version 2.0: https://opensource.org/license/apache-2-0/
--  BSD (2-clause): https://opensource.org/license/BSD-2-Clause
--  BSD (3-clause): https://opensource.org/license/BSD-3-Clause
--  MIT: https://opensource.org/license/MIT
--  Python-2.0: https://opensource.org/license/Python-2.0
--  Zlib: https://opensource.org/license/Zlib
-
-For documentation:
-
--  FreeBSD Documentation License
-    https://www.freebsd.org/copyright/freebsd-doc-license.html
-
-Contributions of code put into the public domain can also be accepted.
-
-Contributions using other licenses might be accepted, but further
-review will be required.
-
-Developer Certificate of Origin
--------------------------------
-
-Your change description should use the standard format for a
-commit message, and must include your ``Signed-off-by`` signature.
-
-In order to keep track of who did what, all patches contributed must
-include a statement that to the best of the contributor's knowledge
-they have the right to contribute it under the specified license.
-
-The test for this is as specified in the `Developer's Certificate of
-Origin (DCO) 1.1 <https://developercertificate.org/>`__. The contributor
-certifies compliance by adding a line saying
-
-Signed-off-by: Developer Name developer@example.org
-
-where ``Developer Name`` is the contributor's real name, and the email
-address is one the developer is reachable through at the time of
-contributing.
-
-::
-
-    Developer's Certificate of Origin 1.1
-
-    By making a contribution to this project, I certify that:
-
-    (a) The contribution was created in whole or in part by me and I
-        have the right to submit it under the open source license
-        indicated in the file; or
-
-    (b) The contribution is based upon previous work that, to the best
-        of my knowledge, is covered under an appropriate open source
-        license and I have the right under that license to submit that
-        work with modifications, whether created in whole or in part
-        by me, under the same open source license (unless I am
-        permitted to submit under a different license), as indicated
-        in the file; or
-
-    (c) The contribution was provided directly to me by some other
-        person who certified (a), (b) or (c) and I have not modified
-        it.
-
-    (d) I understand and agree that this project and the contribution
-        are public and that a record of the contribution (including all
-        personal information I submit with it, including my sign-off) is
-        maintained indefinitely and may be redistributed consistent with
-        this project or the open source license(s) involved.
-
-Sample Change Description / Commit Message
-------------------------------------------
-
-::
-
-    From: Contributor Name <contributor@example.com>
-    Subject: [Repository/Branch PATCH] Pkg-Module: Brief-single-line-summary
-
-    Full-commit-message
+一、关于源码：
+在fork edk2 源码基础上，增加或者修改部分文件而来，详细见commit文件和代码差异
 
-    Signed-off-by: Contributor Name <contributor@example.com>
 
-Notes for sample patch email
-````````````````````````````
-
--  The first line of commit message is taken from the email's subject
-   line following ``[Repository/Branch PATCH]``. The remaining portion
-   of the commit message is the email's content.
--  ``git format-patch`` is one way to create this format
-
-Definitions for sample patch email
-``````````````````````````````````
-
--  ``Repository`` is the identifier of the repository the patch applies.
-    This identifier should only be provided for repositories other than
-    ``edk2``. For example ``edk2-BuildSpecification`` or ``staging``.
--  ``Branch`` is the identifier of the branch the patch applies. This
-    identifier should only be provided for branches other than
-   ``edk2/master``.
-    For example ``edk2/UDK2015``,
-   ``edk2-BuildSpecification/release/1.27``, or
-    ``staging/edk2-test``.
--  ``Module`` is a short identifier for the affected code or
-   documentation. For example ``MdePkg``, ``MdeModulePkg/UsbBusDxe``, ``Introduction``, or
-    ``EDK II INF File Format``.
--  ``Brief-single-line-summary`` is a short summary of the change.
--  The entire first line should be less than ~70 characters.
--  ``Full-commit-message`` a verbose multiple line comment describing
-    the change. Each line should be less than ~70 characters.
--  ``Signed-off-by`` is the contributor's signature identifying them
-    by their real/legal name and their email address.
-
-Submodules
-----------
-
-The current submodules used in EDK II are in `.gitmodules <.gitmodules>`__.
-
-To get a full, buildable EDK II repository, use following steps of git
-command
-
-.. code-block:: bash
-
-  git clone https://github.com/tianocore/edk2.git
-  cd edk2
-  git submodule update --init
-  cd ..
-
-If there's update for submodules, use following git commands to get
-the latest submodules code.
-
-.. code-block:: bash
-
-  cd edk2
-  git pull
-  git submodule update
-
-Note: When cloning submodule repos, '--recursive' option is not
-recommended. EDK II itself will not use any code/feature from
-submodules in above submodules. So using '--recursive' adds a
-dependency on being able to reach servers we do not actually want
-any code from, as well as needlessly downloading code we will not
-use.
-
-.. ===================================================================
-.. This is a bunch of directives to make the README file more readable
-.. ===================================================================
-
-.. CoreCI
-
-.. _Windows_VS2019: https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=32&branchName=master
-.. |WindowsCiBuild| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/Windows%20VS2019%20CI?branchName=master
-.. |WindowsCiTest| image:: https://img.shields.io/azure-devops/tests/tianocore/edk2-ci/32.svg
-.. |WindowsCiCoverage| image:: https://img.shields.io/badge/coverage-coming_soon-blue
-
-.. _Ubuntu_GCC5: https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=31&branchName=master
-.. |UbuntuCiBuild| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/Ubuntu%20GCC5%20CI?branchName=master
-.. |UbuntuCiTest| image:: https://img.shields.io/azure-devops/tests/tianocore/edk2-ci/31.svg
-.. |UbuntuCiCoverage| image:: https://img.shields.io/badge/coverage-coming_soon-blue
-
-.. ArmVirtPkg
-
-.. _ArmVirtPkg_Ubuntu_GCC5: https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=46&branchName=master
-.. |avAArch64du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_AARCH64_DEBUG
-.. |avAArch64ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_AARCH64_RELEASE
-.. |avAArch64nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_AARCH64_NOOPT
-
-.. |avArmdu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_ARM_DEBUG
-.. |avArmru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_ARM_RELEASE
-.. |avArmnu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_ArmVirtPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20QEMU_ARM_NOOPT
-
-.. EmulatorPkg
-
-.. |TCBZ_2668| image:: https://img.shields.io/bugzilla/2668?baseUrl=https%3A%2F%2Fbugzilla.tianocore.org
-.. _TCBZ_2668: https://bugzilla.tianocore.org/show_bug.cgi?id=2668
-
-.. |TCBZ_2639| image:: https://img.shields.io/bugzilla/2639?baseUrl=https%3A%2F%2Fbugzilla.tianocore.org
-.. _TCBZ_2639: https://bugzilla.tianocore.org/show_bug.cgi?id=2639
-
-.. _EmulatorPkg_Win_VS2019:  https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=44&branchName=master
-.. _EmulatorPkg_Ubuntu_GCC5: https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=43&branchName=master
-
-.. |em32d| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_DEBUG
-.. |em32du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_DEBUG
-.. |em32r| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_RELEASE
-.. |em32ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_RELEASE
-.. |em32n| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_NOOPT
-.. |em32nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_NOOPT
-
-.. |em32fd| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_DEBUG
-.. |em32fdu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_DEBUG
-.. |em32fr| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_RELEASE
-.. |em32fru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_RELEASE
-.. |em32fn| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_NOOPT
-.. |em32fnu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_IA32_FULL_NOOPT
-
-.. |em64d| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_DEBUG
-.. |em64du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_DEBUG
-.. |em64r| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_RELEASE
-.. |em64ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_RELEASE
-.. |em64n| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_NOOPT
-.. |em64nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_NOOPT
-
-.. |em64fd| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_DEBUG
-.. |em64fdu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_DEBUG
-.. |em64fr| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_RELEASE
-.. |em64fru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_RELEASE
-.. |em64fn| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_NOOPT
-.. |em64fnu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_EmulatorPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20EmulatorPkg_X64_FULL_NOOPT
-
-.. OvmfPkg
-
-.. |TCBZ_2661| image:: https://img.shields.io/bugzilla/2661?baseUrl=https%3A%2F%2Fbugzilla.tianocore.org
-.. _TCBZ_2661: https://bugzilla.tianocore.org/show_bug.cgi?id=2661
-
-.. _OvmfPkg_Win_VS2019:  https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=50&branchName=master
-.. _OvmfPkg_Ubuntu_GCC5: https://dev.azure.com/tianocore/edk2-ci/_build/latest?definitionId=48&branchName=master
-
-.. |op32d| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_DEBUG
-.. |op32du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_DEBUG
-.. |op32r| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_RELEASE
-.. |op32ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_RELEASE
-.. |op32n| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_NOOPT
-.. |op32nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32_NOOPT
-
-.. |op64d| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_DEBUG
-.. |op64du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_DEBUG
-.. |op64r| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_RELEASE
-.. |op64ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_RELEASE
-.. |op64n| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_NOOPT
-.. |op64nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_X64_NOOPT
-
-
-.. |op3264d| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_DEBUG
-.. |op3264du| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_DEBUG
-.. |op3264r| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_RELEASE
-.. |op3264ru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_RELEASE
-.. |op3264n| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_NOOPT
-.. |op3264nu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_NOOPT
-
-.. |op3264fd| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_FULL_DEBUG
-.. |op3264fdu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_FULL_DEBUG
-.. |op3264fr| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Windows_VS2019_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_FULL_RELEASE
-.. |op3264fru| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_FULL_RELEASE
-.. |op3264fn| replace:: |TCBZ_2661|_
-.. |op3264fnu| image:: https://dev.azure.com/tianocore/edk2-ci/_apis/build/status/PlatformCI_OvmfPkg_Ubuntu_GCC5_CI?branchName=master&jobName=Platform_CI&configuration=Platform_CI%20OVMF_IA32X64_FULL_NOOPT
+二、代数说明：
+
+1、12-14代：完美了， bios画面，安装系统，安装显卡驱动都可以，出hdmi声音。完美突破了gzgang（https://github.com/gangqizai/igd）的不开源，可以不用gzgang的闭源二进制文件了。
+
+2、11代： bios画面，安装系统，安装显卡驱动都可以。就是hdmi声卡出不来，解决办法就是要刷机器bios，把bios里面的两个参数改了或者弄成能设置选择 bios刷进去就好了。大概就是iDisplay Audio Link Frequency改为48mhz，iDisplay Audio Link T-Mode改为4T，如果不行再降低。详见：https://www.bilibili.com/video/BV1Mc41147dA 或者搜b站其他up主他们的教程 。刷bios有风险。
+
+3、6-10代：如果你的机器可以bios开csm并把核显设置为Legacy模式。那你就虚拟机seabios+i440fx或者q35直接用就是，都不需要加载什么rom，即使要加载也是从机器里面提取的而已（具体请参考网上一大堆成功案例。也不需要我这里提供的什么6-14.rom这货）。
+
+我这里是主要针对6-10代小主机或者笔记本等bios没有开csm选项或者没法核显设置为Legacy模式使用，虚拟机只能用ovmf+i440fx加载6-14.rom使用，但是呢有些机器他还是有小bug的，会和这个项目 https://github.com/my33love/gk41-pve-ovmf 中的描述症状一样：WIN10 直通安装没有任何问题，可以正常直通到物理显示器，但是一旦装了UHD驱动就黑屏了，只能RDP远程进去，暂时没找到解决办法！ubuntu测试完美，直通安装与安装完显示器都能在4K 60HZ下工作。我在j4105机器上遇见一样的问题，不管是用最新的6-10代核显驱动还是2019年及以前发布的6-10代核显驱动，只要一驱动了必黑屏。这是前人源代码埋下来的坑，快4年了无人解决，我也解决不了，找我没用。有网友反馈驱动黑屏问题是因为硬盘分区表问题，用mbr就可以了，我估计4-10代如果安装核显后驱动黑屏，大家可以试下安装的时候硬盘用mbr，实在不会就选择ide硬盘给win10虚拟机试试，如果能解决记得反馈。
+
+
+
+三、关于虚拟机机型设置：
+
+intel核显直通6-14代统一使用ovmf+i440fx机型（i440fx至少7.0以上到最新都可以），当然也支持ovmf+q35（这个说下是可以的，大家就别去折腾找虐了，i440fx足够稳定了，我都是劝人放弃q35这个想法，q35看看这两个视频就是了 https://www.bilibili.com/video/BV1gu4m1K7CX 和 https://www.bilibili.com/video/BV1VS411w7ko ，别去浪费时间折腾，直接玩独显q35直通没烦恼）
+
+
+
+四、关于编译源码
+
+如果你不想编译直接使用，请在Build文件夹中直接使用6-14.rom就是
+
+4.1 编译准备工作：
+
+①、首先下载本项目
+
+git clone  https://github.com/lixiaoliu666/intel6-14rom 可能会断掉，请多试几次。你可以使用代理加速（如何切换git clone后的版本自行百度）。
+因为只使用编译后的efi以及生成的rom
+
+②、进入intel6-14rom目录运行一下 bash build_efi_rom.sh 成功
+
+③、到Build目录进行操作，合并出来具体型号的rom或者88合一rom 参考build_efi_rom.sh 最后一行命令
+
+    或者你在windows上直接双击运行 cmd运行自动生成88合一rom.bat 就是
+  Build目录下的是生成rom必备的各种efi文件及efirom（efirom.exe）
+
+4.2 如何使用
+
+①、nano /etc/default/grub 文件中增加内容
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"
+
+②、nano /etc/modprobe.d/pve-blacklist.conf 文件中增加内容
+
+blacklist i915
+
+blacklist snd_hda_intel
+
+options vfio_iommu_type1 allow_unsafe_interrupts=1
+
+③、执行下面三个命令
+update-grub
+update-initramfs -u -k all
+reboot
+
+④、新建win虚拟机并修改虚拟机参数（nano /etc/pve/qemu-server/100.conf ）为类似下面：
+
+args: -set device.hostpci0.addr=02.0 -set device.hostpci0.x-igd-gms=0x2 -set device.hostpci0.x-igd-opregion=on
+
+bios:ovmf
+
+cpu: host
+
+hostpci0: 0000:00:02.0,legacy-igd=1,romfile=6-14.rom
+
+hostpci1: 0000:00:1f.3
+
+vga: none
+
+machine: pc-i440fx-8.0
+
+
+选择 ovmf+机型i440fx 7.0以上就是
+0000:00:02.0是核显的pci编号
+
+0000:00:1f.3是声卡的pci编号，11-14代基本是这个，6-10代不一定是这个有些是1e.0之类的
+
+6-14.rom这个文件请用winscp等软件传输到/usr/share/kvm/ 目录下
+
+当然unraid也可以使用
+
+4.3 虚拟机开机点不亮bios画面
+
+①、检查下你虚拟机配置如上类似
+
+②、可能我的rom里面没有增加你机器的IntelGopDriver.efi，你使用4.6步骤 获取到你机器的bios，然后使用4.5提取出来IntelGopDriver.efi文件。然后放到\Build目录下，你照着 cmd运行自动生成88合一rom.bat 这个程序增加IntelGopDriver.efi改出来命令行，自己合成88合一rom就是。
+
+③、合并了新的6-14.rom你直接用就是
+
+4.4 如何稳定使用
+
+解决6-14代pve核显直通win10 win11闪屏黑屏花屏不出bios启动画面各种不稳定问题（包括虚拟机内部错误）
+
+①、设置物理机bios核显建议为64m,最大只能512M（配合x-igd-gms=0x10参数使用）
+
+②、设置虚拟机类型为linux，这个很重要！
+
+③、参数x-igd-gms=0x2改为0x8 或者 0x10，最大只能0x10，超过就要报错 Unsupported IGD GMS value 0x11
+
+④、6-14.rom出现点不亮核显直通后bios画面黑屏问题或者1 2 3步骤都弄了都还有花屏闪屏问题的解决办法:
+
+6-14.rom是一个通用的大杂烩rom(吹牛的88合一rom),里面集成了太多的gop.efi文件（这些gop.efi不一定是最新的），这些gop文件在同代cpu不同架构之间（比如12代的n100和12代12700这两种不同架构或者类别cpu）核显直通的时候可能互相干扰，导致核显直通可能只有hdmi接口能点亮bios画面或者只有dp接口能点亮bios画面，或者只有typec接口能点亮bios画面，以及两种接口一起插入都点不亮bios画面等等情况，会让你造成显示接口优先输出的假象，解决办法就是，自己生成单独的rom，只添加一个gop.efi来生成rom（屏蔽掉多个gop.efi加进去出现互相干扰）
+
+比如
+EfiRom.exe -e 12-n100.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o 6-14.rom
+这样生成n100处理器的单独rom后你进行测试， 0xffff改不改成对应的id无所谓。
+EfiRom.exe -e IntelGopDriver.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o 6-14.rom
+这样生成你自己处理器的单独rom后你进行测试 IntelGopDriver.efi你通过提取你物理机bios或者下载的官网bios然后用ubu软件或者mmtool软件进行提取而来。， 0xffff改不改成对应的id无所谓。详见4.5 IntelGopDriver.efi如何得来以及怎么提取出来的。
+
+4.5、IntelGopDriver.efi如何得来
+
+①、用ubu提取物理bios的IntelGopDriver.efi 
+
+UBU 1.79.17下载地址：https://pan.baidu.com/s/1pD7NqJoOThQawJw59NyTHQ 提取码: ivwk
+
+②、物理bios可以到华擎官网下载 https://www.asrockind.com/zh-cn/single-board-computer
+
+里面各个类目都点开试试，?SBC?UTX?NUC等等，intel和amd型号都有哦
+
+③、使用mmtool也可以提取
+
+4.6 物理机的bios如何得来
+
+①、到你机器的官网去下载
+
+②、用AMI bios（ami固件）提取工具 直接提取 类似教程详见 https://www.bilibili.com/read/cv25423474/ 提取物理机bios 部分
+
+4.7、源码来源
+
+https://eci.intel.com/docs/3.0.2/components/kvm-hypervisor.html?highlight=igd
+
+Build OVMF.fd for KVM 中的0001-0004.....patch这4个补丁，这4个补丁和https://bugzilla.tianocore.org/show_bug.cgi?id=935 没有本质区别。
+
+4.8、源码更新了什么
+
+相比较于源码来源更新了什么 请见b站视频源码讲解 https://www.bilibili.com/video/BV1aN411g7sf
+
+Intel 4-14代核显直通源码讲解视频，从此再也没有闭源折腾人了，再也没有秘密可言了，希望后来人继续折腾继续贡献源码
+
+4.9、如果你觉得以上操作都麻烦，可以直接fork本项目，然后直接actions进行云编译。
+
+也可以使用cmd2001小伙伴的项目地址，直接自动化编译
+https://github.com/cmd2001/build-edk2-gvtd
+此项目和我这个源码是类似的，实质也是一样的，可以在这个项目里面 提issue，提想法，一起贡献代码。
+
+
+
+
+
+后记，关于6-10代开bios csm和设置核显为legacy直通如何提取vbios
+
+代码如下：
+
+cd /sys/bus/pci/devices/0000:02:00.0
+
+echo 1 > rom
+
+cat rom > /tmp/vbios.bin
+
+echo 0 > rom
+
+你检查下 /tmp/vbios.bin大小是不是0,0就是失败，不是0就是成功
+
+可以参考这个教程
+
+https://foxi.buduanwang.vip/virtualization/pve/1602.html/
