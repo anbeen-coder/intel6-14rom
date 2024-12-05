@@ -58,8 +58,11 @@ blacklist snd_hda_intel
 options vfio_iommu_type1 allow_unsafe_interrupts=1
 
 ③、执行下面三个命令
+
 update-grub
+
 update-initramfs -u -k all
+
 reboot
 
 ④、新建win虚拟机并修改虚拟机参数（nano /etc/pve/qemu-server/100.conf ）为类似下面：
