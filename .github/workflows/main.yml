@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: intel-igdrom
+          name: intel6-14allrom
           path: artifacts/*
 
       # Step 5: 获取当前时间
@@ -45,13 +45,6 @@ jobs:
           format: YYYYMMDD-HHmmSS
           utcOffset: "+08:00"
 
-      # Step 6: 动态生成文件列表
-      - name: Generate file list for release
-        run: |
-          FILE_LIST=$(find artifacts -type f -name "*.rom" | tr '\n' ',')
-          echo "Files to upload: $FILE_LIST"
-          echo "file_list=$FILE_LIST" >> $GITHUB_ENV
-
       # Step 7: 创建 GitHub Release
       - name: Create GitHub Releases
         id: create_release
@@ -60,7 +53,7 @@ jobs:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
-            New Build
+            Intel 6-14 all roms
           draft: false
           prerelease: false
         env:
@@ -71,6 +64,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: artifacts/**
+          file: artifacts/6-14.rom
           tag: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           overwrite: true
