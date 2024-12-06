@@ -64,6 +64,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: artifacts/*
+          file: artifacts/*.rom
           tag: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           overwrite: true
