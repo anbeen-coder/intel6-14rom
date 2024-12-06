@@ -45,7 +45,7 @@ jobs:
           format: YYYYMMDD-HHmmSS
           utcOffset: "+08:00"
 
-      # Step 7: 创建 GitHub Release
+      # Step 6: 创建 GitHub Release
       - name: Create GitHub Releases
         id: create_release
         uses: actions/create-release@v1
@@ -59,11 +59,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Step 8: 上传 ROM 文件到 Release
+      # Step 7: 上传 ROM 文件到 Release
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: artifacts/intel6-14roms.zip
+          file: artifacts/6-14.rom
+          tag: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
+          overwrite: true
+
+          # Step 7: 上传 ROM 文件到 Release
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: artifacts/pc-10.rom
           tag: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           overwrite: true
