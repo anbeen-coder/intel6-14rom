@@ -65,5 +65,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: artifacts/6-14.rom
+          file: artifacts/intel6-14allrom.zip
           tag: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           overwrite: true
