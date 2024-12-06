@@ -52,6 +52,6 @@ jobs:
         with:
             repo_token: ${{ secrets.GITHUB_TOKEN }}
             file: 6-14.rom
-            asset_name: ${{ format('intel-igd-6-14-{0}.rom', steps.current-time.outputs.formattedTime )}}
+            asset_name: ${{ format('6-14-{0}.rom', steps.current-time.outputs.formattedTime )}}
             tag: ${{ format('v{0}',steps.current-time.outputs.formattedTime )}}
             overwrite: true
