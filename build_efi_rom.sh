@@ -32,7 +32,7 @@ ls
 ls
 ./EfiRom -e 12-n100.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o 12-n100.rom
 ls
-./EfiRom -e N2930.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o N2930rom
+./EfiRom -e N2930.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o N2930.rom
 ls
 ./EfiRom -e N3350.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o N3350.rom
 ls
