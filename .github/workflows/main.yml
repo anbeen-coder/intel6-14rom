@@ -59,8 +59,8 @@ jobs:
           tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
           release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
-            New Build
-          draft: false
+            build 6-14 all roms
+            draft: false
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
