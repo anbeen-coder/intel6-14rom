@@ -151,7 +151,7 @@ jobs:
           file: artifacts/N2930.rom
           overwrite: true
           
-       - name: Upload binaries to release
+      - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -179,7 +179,7 @@ jobs:
           file: artifacts/nb-12-12700h.rom
           overwrite: true
  
-       - name: Upload binaries to release
+      - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
