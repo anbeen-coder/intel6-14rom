@@ -34,7 +34,7 @@ intel核显直通6-14代统一使用ovmf+i440fx机型（i440fx至少7.0以上到
 
 ①、首先下载本项目
 
-git clone  https://github.com/lixiaoliu666/intel6-14rom 可能会断掉，请多试几次。你可以使用代理加速（如何切换git clone后的版本自行百度）。
+git clone https://github.com/lixiaoliu666/intel6-14rom 可能会断掉，请多试几次。你可以使用代理加速（如何切换git clone后的版本自行百度）。
 因为只使用编译后的efi以及生成的rom
 
 ②、进入intel6-14rom目录运行一下 bash build_efi_rom.sh 成功
@@ -115,7 +115,7 @@ machine: pc-i440fx-8.0
 
 比如
 EfiRom.exe -e 12-n100.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o 6-14.rom
-这样生成n100处理器的单独rom后你进行测试， 0xffff改不改成对应的id无所谓。
+
 EfiRom.exe -e IntelGopDriver.efi IgdAssignmentDxe.efi PlatformGOPPolicy.efi -f 0x8086 -i 0xffff -o 6-14.rom
 这样生成你自己处理器的单独rom后你进行测试 IntelGopDriver.efi你通过提取你物理机bios或者下载的官网bios然后用ubu软件或者mmtool软件进行提取而来。， 0xffff改不改成对应的id无所谓。详见4.5 IntelGopDriver.efi如何得来以及怎么提取出来的。
 
@@ -149,7 +149,9 @@ Build OVMF.fd for KVM 中的0001-0004.....patch这4个补丁，这4个补丁和h
 
 Intel 4-14代核显直通源码讲解视频，从此再也没有闭源折腾人了，再也没有秘密可言了，希望后来人继续折腾继续贡献源码
 
-4.9、如果你觉得以上操作都麻烦，可以直接fork本项目，然后直接actions进行云编译。
+4.9、如果你觉得以上操作都麻烦，可以直接fork本项目，然后直接actions进行云编译,或者直接下载本项目云编译releases里面的6-14.rom和分别的rom https://github.com/lixiaoliu666/intel6-14rom/releases
+
+感谢佛西和蜗牛网友写的actions能够实现本项目自动云编译和云发布releases
 
 也可以使用cmd2001小伙伴的项目地址，直接自动化编译
 https://github.com/cmd2001/build-edk2-gvtd
