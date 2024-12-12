@@ -1,4 +1,4 @@
-name: Build
+name: Build intel 6-14 all roms
 
 on:
   push:
