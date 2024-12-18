@@ -56,8 +56,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-          tag_name: ${{ format('v{0}', steps.current-time.outputs.formattedTime) }}
-          release_name: ${{ format('build-{0}', steps.current-time.outputs.formattedTime) }}
+          tag_name: ${{ format('v1.0 {0}', steps.current-time.outputs.formattedTime) }}
+          release_name: ${{ format('v1.0 build-{0}', steps.current-time.outputs.formattedTime) }}
           body: |
             build 6-14 all roms 
           draft: false
