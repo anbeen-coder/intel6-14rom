@@ -91,6 +91,15 @@ machine: pc-i440fx-8.0
 
 当然unraid也可以使用
 
+参数解释：
+1⃣️x-igd-opregion=on：实现物理输出，它是实验性的（x代表experimental实验性的，官方不支持就一直是实验性）（The x-igd-opregion property exposes opregion (VBT included) to guest driver so that the guest driver could parse display connector information from. This property mandatory for the Windows VM to enable display output.）
+
+2⃣️x-igd-gms=0x2代表使用核显预分配显存大小，解决虚拟机内存占用过大问题，这个要大于bios中的核显显存大小，源码是gms * 32 * MiB;这样计算的，0x1代表32M，0x2=64M，0x3=96M，0x4=128M，0x5=160M，0x6=192M，0x7=224M，0x8=256m，0x9=288M，0x10=320M，0xf0=5120M（The x-igd-gms property sets a value multiplied by 32 as the amount of pre-allocated memory (in units of MB) to support IGD in VGA modes.） 
+
+3⃣️legacy-igd=1这个是pve私有参数（其他没这个参数比如unraid）让核显Legacy模式显示画面 
+
+参数解释详见 https://eci.intel.com/docs/3.0/components/kvm-hypervisor.html Passthrough KVM Graphics Device部分
+
 4.3 虚拟机开机点不亮bios画面
 
 ①、检查下你虚拟机配置如上类似
@@ -103,11 +112,11 @@ machine: pc-i440fx-8.0
 
 解决6-14代pve核显直通win10 win11闪屏黑屏花屏不出bios启动画面各种不稳定问题（包括虚拟机内部错误）
 
-①、设置物理机bios核显建议为64m,最大只能512M（配合x-igd-gms=0x10参数使用）
+①、设置物理机bios核显建议为64m,最大只能320M（配合x-igd-gms=0x10参数使用）
 
 ②、设置虚拟机类型为linux，这个很重要！
 
-③、参数x-igd-gms=0x2改为0x8 或者 0x10，最大只能0x10，超过就要报错 Unsupported IGD GMS value 0x11
+③、参数x-igd-gms=0x2改为0x8 或者 0x10，最大只能0x10，qemu9版本以下超过就要报错 Unsupported IGD GMS value 0x11，最新的qemu9版本不作限制了，可以到0xf0也就是5120M 5G核显了 对应 源码if (gms < 0xf0) {return gms * 32 * MiB;} 
 
 ④、6-14.rom出现点不亮核显直通后bios画面黑屏问题或者1 2 3步骤都弄了都还有花屏闪屏问题的解决办法:
 
