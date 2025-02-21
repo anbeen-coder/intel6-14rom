@@ -1,3 +1,5 @@
+Language [<a href="README.rst">中文</a>] | [<a href="README.en.MD">English</a>] 
+
 intel 6-14代pve虚拟机核显直通使用rom 使用说明（不支持ultra1 2代台式机和笔记本，没机器测试懒得搞）
 
 本项目fork edk2 2024年12月5日版本
