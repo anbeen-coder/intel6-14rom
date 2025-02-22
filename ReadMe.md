@@ -17,9 +17,9 @@ This project is developed by adding or modifying specific files based on the for
 
 二、代数说明Intel CPU Gen Description：
 
-1、12-14代：完美了， bios画面，安装系统，安装显卡驱动都可以，出hdmi声音。完美突破了gzgang（https://github.com/gangqizai/igd）的不开源，可以不用gzgang的闭源二进制文件了。
+1、12-14代：完美了， bios画面，安装系统，安装显卡驱动都可以，出hdmi声音。完美突破了gangqizai https://github.com/gangqizai/igd 的不开源，可以不用gzgang的闭源二进制文件了。
 
-For 12th-14th Gen CPUs: Achieved full compatibility.BIOS interface, OS installation, and graphics driver installation now work flawlessly.HDMI audio output is functional.Successfully bypassed the closed-source limitations of gzgang's project（https://github.com/gangqizai/igd）, eliminating dependency on its proprietary binaries.
+For 12th-14th Gen CPUs: Achieved full compatibility.BIOS interface, OS installation, and graphics driver installation now work flawlessly.HDMI audio output is functional.Successfully bypassed the closed-source limitations of gangqizai's project https://github.com/gangqizai/igd , eliminating dependency on its proprietary binaries.
 
 2、11代： bios画面，安装系统，安装显卡驱动都可以。就是hdmi声卡出不来，解决办法就是要刷机器bios，把bios里面的两个参数改了或者弄成能设置选择 bios刷进去就好了。大概就是iDisplay Audio Link Frequency改为48mhz，iDisplay Audio Link T-Mode改为4T，如果不行再降低。详见：https://www.bilibili.com/video/BV1Mc41147dA 或者搜b站其他up主他们的教程 。刷bios有风险。
 
