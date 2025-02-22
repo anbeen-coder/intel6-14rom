@@ -1,5 +1,3 @@
-Language [<a href="ReadMe.md">中文</a>] | [<a href="README.en.MD">English</a>] 
-
 intel 6-14代pve虚拟机核显直通使用rom 使用说明（不支持ultra1 2代台式机和笔记本，没机器测试懒得搞）
 
 Usage Instructions for Intel 6th-14th Generation CPU Integrated GPU Passthrough in PVE Virtual Machines using Custom ROM Files
