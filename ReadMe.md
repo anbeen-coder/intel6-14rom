@@ -51,6 +51,7 @@ Some netizens have reported that the black - screen issue after driver installat
 intel核显直通6-14代统一使用ovmf+i440fx机型（i440fx至少10.0以上到最新都可以），当然也支持ovmf+q35 10
 
 For Intel integrated graphics passthrough across 6th to 14th generations, it is recommended to unify the configuration using OVMF + i440fx machine type (i440fx version 10.0 or newer). While OVMF + q35 10 is technically supported
+
 四、关于编译源码About source code compilation：
 
 如果你不想编译直接使用，请在Build文件夹中直接使用6-14-qemu10.rom就是
